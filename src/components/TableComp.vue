@@ -17,9 +17,9 @@ export default {
         const secondTable = ref(null);
 
         const tableData = ref([
-            { name: 'juswa1', desc: '1' },
-            { name: 'juswa2', desc: '2' },
-            { name: 'juswa3', desc: '3' },
+            { name: 'juswa1', desc: 'This is sample description1' },
+            { name: 'juswa2', desc: 'This is sample description2' },
+            { name: 'juswa3', desc: 'This is sample description3' },
         ]);
 
         const openSecondTable = () => {
