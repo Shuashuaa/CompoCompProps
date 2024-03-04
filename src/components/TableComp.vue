@@ -1,8 +1,8 @@
 <template>
-    <!-- <div > -->
+    <div style="display: flex; justify-content: center;">
         <v-btn @click="openSecondTable">Open Second Table Dialog</v-btn>
-        <SecondTableComp ref="secondTable"></SecondTableComp>
-    <!-- </div> -->
+        <SecondTableComp :sampleData="tableData" ref="secondTable"></SecondTableComp>
+    </div>
 </template>
 
 <script>
@@ -16,13 +16,22 @@ export default {
     setup() {
         const secondTable = ref(null);
 
+        const tableData = ref([
+            { name: 'juswa1', desc: '1' },
+            { name: 'juswa2', desc: '2' },
+            { name: 'juswa3', desc: '3' },
+        ]);
+
         const openSecondTable = () => {
-            secondTable.value.openDialog();
+            secondTable.value.dialog = true; //direct
+            secondTable.value.dataFromTableComp = tableData; //direct
+            // secondTable.value.openDialog();
         };
 
         return {
             openSecondTable,
-            secondTable
+            secondTable,
+            tableData
         };
     }
 };
