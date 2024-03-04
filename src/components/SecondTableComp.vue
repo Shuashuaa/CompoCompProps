@@ -6,9 +6,30 @@
       <v-card
         max-width="400"
         prepend-icon="mdi-update"
-        text="Your application will relaunch automatically after the update is complete."
-        title="Update in progress"
+        text="Data Below are from TableComp"
+        title="Dialog from SecondTableComp"
       >
+	  	<v-table>
+			<thead>
+				<tr>
+					<th class="text-left">
+					Name
+					</th>
+					<th class="text-left">
+					Calories
+					</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr
+					v-for="item in dataFromTableComp"
+					:key="item.name"
+				>
+					<td>{{ item.name }}</td>
+					<td>{{ item.desc }}</td>
+				</tr>
+			</tbody>
+		</v-table>
         <template v-slot:actions>
           <v-btn
             class="ms-auto"
@@ -24,16 +45,25 @@
 import { ref } from 'vue';
 
 export default {
-    setup() {
-        const dialog = ref(false);
-
-        const openDialog = () => {
-            dialog.value = true;
-        };
+    //props: {
+        // sampleData: {
+        //     type: Array,
+        //     default: () => []
+        // },
+    //},
+    setup(props) {
+        const dialog = ref(false); //direct called to TableComp
+		const dataFromTableComp = ref([]); //direct called to TableComp
+        // const openDialog = () => {
+		// 	console.log(props.sampleData)
+		// 	dataFromTableComp.value = props.sampleData;
+        //     dialog.value = true;
+        // };
 
         return {
-            dialog,
-            openDialog
+			dialog,
+			// openDialog,
+			dataFromTableComp
         };
     }
 };
